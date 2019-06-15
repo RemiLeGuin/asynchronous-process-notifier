@@ -1,0 +1,6 @@
+.sfdx/
+/.vscode
+/config
+.forceignore
+.prettierignore
+.prettierrc

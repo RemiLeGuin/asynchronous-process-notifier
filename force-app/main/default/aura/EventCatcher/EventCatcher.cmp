@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <lightning:empApi aura:id="empApi"/>
+    <aura:attribute name="channel" type="String" default="/event/AsynchronousProcess__e"/>
+    <aura:attribute name="subscription" type="Map"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:registerEvent name="toastEvent" type="force:showToast"/>
+</aura:component>
