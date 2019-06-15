@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>EmailAddressAlreadyExists</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email address already exists</shortDescription>
+        <value>The email address set for {0} is already used in the org. {0} email address has been cancelled.</value>
+    </labels>
+</CustomLabels>
