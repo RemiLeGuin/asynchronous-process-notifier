@@ -14,33 +14,17 @@ public class QueueableProcess implements Queueable {
         Datetime dt = Datetime.now();
         // Artificial delay to fake a long-running process.
         while (Datetime.now() < dt.addSeconds(5)) {}
-        Set<String> allEmailAddresses = getAllEmailAddresses();
-        List<Account> accountsToRollback = rollbackAccountsEmailAddresses(accounts, oldAccounts, allEmailAddresses);
+        List<Account> accountsToRollback = rollbackAccountsEmailAddresses(accounts, oldAccounts);
         update accountsToRollback;
         List<AsynchronousProcess__e> asyncProcesses = setAsyncProcessEvents(accountsToRollback, userId);
         EventBus.publish(asyncProcesses);
     }
 
-    private static Set<String> getAllEmailAddresses() {
-        List<Account> allAccounts = [SELECT EmailAddress__c FROM Account WHERE EmailAddress__c != null];
-        Set<String> allEmailAddresses = new Set<String> ();
-        for (Account acc : allAccounts) {
-            allEmailAddresses.add(acc.EmailAddress__c);
-        }
-        return allEmailAddresses;
-    }
-
-    private static List<Account> rollbackAccountsEmailAddresses(List<Account> accounts,
-                                                                Map<Id, Account> oldAccounts,
-                                                                Set<String> allEmailAddresses) {
-        List<Account> accountsToRollback = new List<Account> ();
+    private static List<Account> rollbackAccountsEmailAddresses(List<Account> accounts, Map<Id, Account> oldAccounts) {
         for (Account acc : accounts) {
-            if (allEmailAddresses.contains(acc.EmailAddress__c)) {
-                acc.EmailAddress__c = oldAccounts.get(acc.Id).EmailAddress__c;
-                accountsToRollback.add(acc);
-            }
+            acc.EmailAddress__c = oldAccounts.get(acc.Id).EmailAddress__c;
         }
-        return accountsToRollback;
+        return accounts;
     }
 
     private static List<AsynchronousProcess__e> setAsyncProcessEvents(List<Account> accounts, Id userId) {
