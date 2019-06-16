@@ -16,5 +16,9 @@
         <members>EmailAddressAlreadyExists</members>
         <name>CustomLabel</name>
     </types>
+    <types>
+        <members>AsynchronousProcess__e</members>
+        <name>CustomObject</name>
+    </types>
     <version>45.0</version>
 </Package>
