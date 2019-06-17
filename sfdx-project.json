@@ -1,7 +1,7 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "platform-events",
       "default": true
     }
   ],
