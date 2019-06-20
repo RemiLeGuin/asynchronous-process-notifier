@@ -4,7 +4,6 @@
     // Specifies an error handler function for empApi.
     onInit: function(component, event, helper) {
         // Get empApi component.
-        console.log('test');
         const empApi = component.find("empApi");
         // Define an error handler function that prints the error to the console.
         const errorHandler = function(message) {

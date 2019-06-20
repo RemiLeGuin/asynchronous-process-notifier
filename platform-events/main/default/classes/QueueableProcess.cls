@@ -1,12 +1,12 @@
 public class QueueableProcess implements Queueable {
     
-    private List<Account> accounts;
-    private Map<Id, Account> oldAccounts;
+    private List<Contact> contacts;
+    private Map<Id, Contact> oldContacts;
     private Id userId;
     
-    public QueueableProcess(List<Account> accounts, Map<Id, Account> oldAccounts, Id userId) {
-        this.accounts = accounts;
-        this.oldAccounts = oldAccounts;
+    public QueueableProcess(List<Contact> contacts, Map<Id, Contact> oldContacts, Id userId) {
+        this.contacts = contacts;
+        this.oldContacts = oldContacts;
         this.userId = userId;
     }
     
@@ -14,24 +14,24 @@ public class QueueableProcess implements Queueable {
         Datetime dt = Datetime.now();
         // Artificial delay to fake a long-running process.
         while (Datetime.now() < dt.addSeconds(5)) {}
-        List<Account> accountsToRollback = rollbackAccountsEmailAddresses(accounts, oldAccounts);
-        update accountsToRollback;
-        List<AsynchronousProcess__e> asyncProcesses = setAsyncProcessEvents(accountsToRollback, userId);
+        List<Contact> contactsToRollback = rollbackContactsEmailAddresses(contacts, oldContacts);
+        update contactsToRollback;
+        List<AsynchronousProcess__e> asyncProcesses = setAsyncProcessEvents(contactsToRollback, userId);
         EventBus.publish(asyncProcesses);
     }
 
-    private static List<Account> rollbackAccountsEmailAddresses(List<Account> accounts, Map<Id, Account> oldAccounts) {
-        for (Account acc : accounts) {
-            acc.EmailAddress__c = oldAccounts.get(acc.Id).EmailAddress__c;
+    private static List<Contact> rollbackContactsEmailAddresses(List<Contact> contacts, Map<Id, Contact> oldContacts) {
+        for (Contact ct : contacts) {
+            ct.Email = oldContacts.get(ct.Id).Email;
         }
-        return accounts;
+        return contacts;
     }
 
-    private static List<AsynchronousProcess__e> setAsyncProcessEvents(List<Account> accounts, Id userId) {
+    private static List<AsynchronousProcess__e> setAsyncProcessEvents(List<Contact> contacts, Id userId) {
         List<AsynchronousProcess__e> asyncProcesses = new List<AsynchronousProcess__e> ();
-        for (Account acc : accounts) {
-            asyncProcesses.add(new AsynchronousProcess__e(RecordId__c = acc.Id,
-                                                          RecordName__c = acc.Name,
+        for (Contact ct : contacts) {
+            asyncProcesses.add(new AsynchronousProcess__e(RecordId__c = ct.Id,
+                                                          RecordName__c = ct.FirstName + ' ' + ct.LastName,
                                                           UserToNotify__c = userId,
                                                           Message__c = Label.EmailAddressAlreadyExists));
         }
