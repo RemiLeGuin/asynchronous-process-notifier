@@ -5,7 +5,7 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>Account</members>
+        <members>ContactEmailRollback</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -13,8 +13,8 @@
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
-        <members>EmailAddressAlreadyExists</members>
-        <name>CustomLabel</name>
+        <members>*</members>
+        <name>CustomLabels</name>
     </types>
     <types>
         <members>AsynchronousProcess__e</members>

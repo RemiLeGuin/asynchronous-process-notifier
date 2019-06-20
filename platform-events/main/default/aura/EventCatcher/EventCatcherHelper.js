@@ -33,8 +33,8 @@
             };
             // Display notification in a toast.
             this.displayToast("sticky", "error", newNotification.recordId, newNotification.recordName, newNotification.message);
-            if (window.location.toString().includes("/lightning/r/Account/" + newNotification.recordId)
-                || window.location.toString().includes("/lightning/o/Account/list")) {
+            if (window.location.toString().includes("/lightning/r/Contact/" + newNotification.recordId)
+                || window.location.toString().includes("/lightning/o/Contact/list")) {
                 $A.get("e.force:refreshView").fire();
             };
         }
@@ -49,7 +49,7 @@
             message: message,
             messageTemplate: message,
             messageTemplateData: [{
-                url: "/lightning/r/Account/" + recordId + "/view",
+                url: "/lightning/r/Contact/" + recordId + "/view",
                 label: recordName,
             }]
         });
