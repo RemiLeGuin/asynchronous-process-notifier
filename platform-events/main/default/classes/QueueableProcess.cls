@@ -25,7 +25,7 @@ public class QueueableProcess implements Queueable {
             if (oldContacts != null && !oldContacts.isEmpty() && oldContacts.get(ct.Id) != null
                 && ct.Email != oldContacts.get(ct.Id).Email) {
                 ct.Email = oldContacts.get(ct.Id).Email;
-            } 
+            }
         }
         return contacts;
     }
