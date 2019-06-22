@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>QueueableProcess</members>
+        <members>QueueableProcessTest</members>
         <name>ApexClass</name>
     </types>
     <types>
