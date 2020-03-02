@@ -1,11 +1,18 @@
 {
-  "packageDirectories": [
-    {
-      "path": "platform-events",
-      "default": true
+    "packageDirectories": [
+        {
+            "path": "platform-events",
+            "default": true,
+            "package": "Platform Events",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT"
+        }
+    ],
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "48.0",
+    "packageAliases": {
+        "Platform Events": "0Ho3X000000k9jCSAQ",
+        "Platform Events@0.1.0-1": "04t3X000002kegHQAQ"
     }
-  ],
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "45.0"
 }

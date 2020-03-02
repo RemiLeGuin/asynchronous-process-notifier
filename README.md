@@ -2,7 +2,7 @@
 
 This repository illustrates a fake functional case to introduce Salesforce Platform Events: each time a contact's email address is updated, an asynchronous process rolls it back to its previous state and notififies the user of it with an error toast notification (red ribbon on top of the page).
 
-**Only works for Lightning experience!**
+**Only works for Lightning experience on desktop!**
 
 To know and understand the purpose of platform events, please review the following Trailhead modules:
 -   [Platform Events Basics](https://trailhead.salesforce.com/en/content/learn/modules/platform_events_basics)
@@ -10,13 +10,14 @@ To know and understand the purpose of platform events, please review the followi
 
 
 ## Steps to install it in a Salesforce instance:
-1. Clone the Git repository on your computer.
-2. Open it in Visual Studio Code with Salesforce CLI and Salesforce Extension Pack installed.
-3. Wait a minute for the VSC plugins to initialize and then connect to a Salesforce instance of your choice.
-4. Right click on manifest/package.xml and select 'SFDX: Deploy Source in Manifest to Org'.
-5. Go to the Salesforce instance and go to 'Setup' -> 'Apps' -> 'App Manager'.
-6. Edit the Lightning app of your choice and navigate to 'Utility Items' section on the left.
-7. Add the 'EventCatcher' utility item. **Do not forget to set 'Start automatically'.**
+Install the unlocked package by clicking one of the following URLs:
+-   [Follow this link for Sandboxes](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002kegHQAQ "https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002kegHQAQ")
+-   [Follow this link for Developer Editions and Trailhead Playgrounds](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002kegHQAQ "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002kegHQAQ")
+
+Then, follow these configuration steps:
+1. Go to the Salesforce instance and go to 'Setup' -> 'Apps' -> 'App Manager'.
+2. Edit the Lightning app of your choice and navigate to 'Utility Items' section on the left.
+3. Add the 'EventCatcher' utility item. **Do not forget to set 'Start automatically'.**
 
 ## Test it yourself!
 -   Go to a contact and modify its email address.
