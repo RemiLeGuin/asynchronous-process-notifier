@@ -3,15 +3,27 @@ import { getRecord } from 'lightning/uiRecordApi';
 import { subscribe, onError } from 'lightning/empApi';
 import USER_ID from '@salesforce/user/Id';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { CurrentPageReference, NavigationMixin } from "lightning/navigation";
 
 export default class EventCatcherLWC extends LightningElement {
 
     channelName = '/event/AsynchronousProcess__e';
     subscription = {};
     recordId;
+    isRefreshed = true;
 
     @wire(getRecord, { recordId: '$recordId', layoutTypes: 'Full' })
     record;
+
+    @wire(CurrentPageReference)
+    currentPageReference() {
+        //if(!this.isRefreshed && window.location.href.includes(this.recordId)) {
+        if(this.recordId) {
+            console.log('CURRENT PAGE REFERENCE REFRESH');
+            refreshApex(this.record);
+            //this.isRefreshed = true;
+        }
+    }
 
     // Called when the component is initialized.
     // Subscribes to the channel and displays a toast message.
@@ -40,12 +52,17 @@ export default class EventCatcherLWC extends LightningElement {
                 recordName: response.data.payload.RecordName__c,
                 message: response.data.payload.Message__c
             };
+            this.isRefreshed = false;
             // Display notification in a toast.
             this.displayToast("sticky", "error", newNotification.recordId, newNotification.recordName, newNotification.message);
             // Get record's data.
             this.recordId = newNotification.recordId;
             // Refresh record to see data cancellation.
-            refreshApex(this.record);
+            //if(!this.isRefreshed && window.location.href.includes(this.recordId)) {
+                console.log('ON RECEIVE EVENT REFRESH');
+                refreshApex(this.record);
+                //this.isRefreshed = true;
+            //}
         }
     }
 
