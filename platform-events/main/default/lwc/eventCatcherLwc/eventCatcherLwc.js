@@ -1,9 +1,8 @@
 import { LightningElement, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
 import { subscribe, onError } from 'lightning/empApi';
 import USER_ID from '@salesforce/user/Id';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { CurrentPageReference, NavigationMixin } from "lightning/navigation";
+import { CurrentPageReference } from "lightning/navigation";
 
 export default class EventCatcherLWC extends LightningElement {
 
@@ -11,29 +10,11 @@ export default class EventCatcherLWC extends LightningElement {
     subscription = {};
     recordId;
 
-    @wire(getRecord, { recordId: '$recordId', layoutTypes: 'Full' })
-    record;
-
     @wire(CurrentPageReference)
     currentPageReference() {
-        if(this.recordId) {
-            var recordId = this.recordId;
-            this.recordId = undefined;
-            this.record = undefined;
-            this.recordId = recordId;
-            console.log('CURRENT PAGE REFERENCE REFRESH');
-            refreshApex(this.record);
-        }
-    }
-
-    refreshData() {
-        if(this.recordId) {
-            var recordId = this.recordId;
-            this.recordId = undefined;
-            this.record = undefined;
-            this.recordId = recordId;
-            console.log('BUTTON REFRESH');
-            refreshApex(this.record);
+        // When the user navigates on the record's page, refresh the data to see an eventual rollback.
+        if (this.recordId && window.location.href.includes(this.recordId)) {
+            eval("$A.get('e.force:refreshView').fire();");
         }
     }
 
@@ -66,12 +47,11 @@ export default class EventCatcherLWC extends LightningElement {
             };
             // Display notification in a toast.
             this.displayToast("sticky", "error", newNotification.recordId, newNotification.recordName, newNotification.message);
-            // Get record's data.
-            this.recordId = undefined;
-            this.record = undefined;
+            // If the user is on the record's page, refresh the data to see an eventual rollback.
             this.recordId = newNotification.recordId;
-            console.log('ON RECEIVE EVENT REFRESH');
-            refreshApex(this.record);
+            if (window.location.href.includes(this.recordId)) {
+                eval("$A.get('e.force:refreshView').fire();");
+            }
         }
     }
 
