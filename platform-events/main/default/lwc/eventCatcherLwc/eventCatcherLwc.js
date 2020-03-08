@@ -10,18 +10,30 @@ export default class EventCatcherLWC extends LightningElement {
     channelName = '/event/AsynchronousProcess__e';
     subscription = {};
     recordId;
-    isRefreshed = true;
 
     @wire(getRecord, { recordId: '$recordId', layoutTypes: 'Full' })
     record;
 
     @wire(CurrentPageReference)
     currentPageReference() {
-        //if(!this.isRefreshed && window.location.href.includes(this.recordId)) {
         if(this.recordId) {
+            var recordId = this.recordId;
+            this.recordId = undefined;
+            this.record = undefined;
+            this.recordId = recordId;
             console.log('CURRENT PAGE REFERENCE REFRESH');
             refreshApex(this.record);
-            //this.isRefreshed = true;
+        }
+    }
+
+    refreshData() {
+        if(this.recordId) {
+            var recordId = this.recordId;
+            this.recordId = undefined;
+            this.record = undefined;
+            this.recordId = recordId;
+            console.log('BUTTON REFRESH');
+            refreshApex(this.record);
         }
     }
 
@@ -52,17 +64,14 @@ export default class EventCatcherLWC extends LightningElement {
                 recordName: response.data.payload.RecordName__c,
                 message: response.data.payload.Message__c
             };
-            this.isRefreshed = false;
             // Display notification in a toast.
             this.displayToast("sticky", "error", newNotification.recordId, newNotification.recordName, newNotification.message);
             // Get record's data.
+            this.recordId = undefined;
+            this.record = undefined;
             this.recordId = newNotification.recordId;
-            // Refresh record to see data cancellation.
-            //if(!this.isRefreshed && window.location.href.includes(this.recordId)) {
-                console.log('ON RECEIVE EVENT REFRESH');
-                refreshApex(this.record);
-                //this.isRefreshed = true;
-            //}
+            console.log('ON RECEIVE EVENT REFRESH');
+            refreshApex(this.record);
         }
     }
 
