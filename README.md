@@ -15,9 +15,9 @@ Install the unlocked package by clicking one of the following URLs:
 -   [Follow this link for Developer Editions and Trailhead Playgrounds](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002kegHQAQ "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002kegHQAQ")
 
 Then, follow these configuration steps:
-1. Go to the Salesforce instance and go to 'Setup' -> 'Apps' -> 'App Manager'.
+1. Go to the Salesforce instance and go to 'Setup' &rightarrow 'Apps' &rightarrow 'App Manager'.
 2. Edit the Lightning app of your choice and navigate to 'Utility Items' section on the left.
-3. Add the 'EventCatcher' utility item. **Do not forget to set 'Start automatically'.**
+3. Add the 'Event Catcher (LWC)' utility item. **Do not forget to set 'Start automatically'.**
 
 ## Test it yourself!
 -   Go to a contact and modify its email address.
