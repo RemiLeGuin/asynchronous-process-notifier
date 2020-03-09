@@ -34,6 +34,9 @@ public class QueueableProcess implements Queueable {
         List<AsynchronousProcess__e> asyncProcesses = new List<AsynchronousProcess__e> ();
         for (Contact ct : contacts) {
             asyncProcesses.add(new AsynchronousProcess__e(RecordId__c = ct.Id,
+                                                          ObjectApiName__c = 'Contact',
+                                                          ToastNotificationMode__c = 'sticky',
+                                                          OperationInformation__c = 'error',
                                                           RecordName__c = ct.FirstName + ' ' + ct.LastName,
                                                           UserToNotify__c = userId,
                                                           Message__c = Label.EmailAddressAlreadyExists));

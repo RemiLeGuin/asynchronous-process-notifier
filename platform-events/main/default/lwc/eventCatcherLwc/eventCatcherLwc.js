@@ -9,12 +9,15 @@ export default class EventCatcherLWC extends LightningElement {
     channelName = '/event/AsynchronousProcess__e';
     subscription = {};
     recordId;
+    isRefreshed = true; // The data refreshes to see an eventual rollback. We only want this to happen once after an event occurs.
 
+    // Check for URL change during navigation.
     @wire(CurrentPageReference)
     currentPageReference() {
         // When the user navigates on the record's page, refresh the data to see an eventual rollback.
-        if (this.recordId && window.location.href.includes(this.recordId)) {
+        if (!this.isRefreshed && this.recordId && window.location.href.includes(this.recordId + '/view')) {
             eval("$A.get('e.force:refreshView').fire();");
+            this.isRefreshed = true;
         }
     }
 
@@ -41,29 +44,35 @@ export default class EventCatcherLWC extends LightningElement {
         if (response.data.payload.UserToNotify__c == USER_ID) {
             // Extract notification from platform event.
             const newNotification = {
+                mode: response.data.payload.ToastNotificationMode__c,
+                variant: response.data.payload.OperationInformation__c,
+                objectType: response.data.payload.ObjectApiName__c,
                 recordId: response.data.payload.RecordId__c,
                 recordName: response.data.payload.RecordName__c,
                 message: response.data.payload.Message__c
             };
             // Display notification in a toast.
-            this.displayToast("sticky", "error", newNotification.recordId, newNotification.recordName, newNotification.message);
+            this.displayToast(newNotification.mode, newNotification.variant, newNotification.objectType,
+                              newNotification.recordId, newNotification.recordName, newNotification.message);
             // If the user is on the record's page, refresh the data to see an eventual rollback.
             this.recordId = newNotification.recordId;
-            if (window.location.href.includes(this.recordId)) {
+            this.isRefreshed = false;
+            if (window.location.href.includes(this.recordId + '/view')) {
                 eval("$A.get('e.force:refreshView').fire();");
+                this.isRefreshed = true;
             }
         }
     }
 
     // Displays the given toast message.
-    displayToast(mode, variant, recordId, recordName, message) {
+    displayToast(mode, variant, objectType, recordId, recordName, message) {
         const toastEvent = new ShowToastEvent({
-            "mode": mode,
-            "variant": variant,
-            "message": message,
-            "messageData": [
+            'mode': mode,
+            'variant': variant,
+            'message': message,
+            'messageData': [
                 {
-                    url: "/lightning/r/Contact/" + recordId + "/view",
+                    url: '/lightning/r/' + objectType + '/' + recordId + '/view',
                     label: recordName,
                 }
             ]
