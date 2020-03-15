@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>
+        <p>Service Aura Component listening to the 'AsynchronousProcessNotification__e' platform event.</p>
+    </aura:description>
+    <aura:example name="AsyncProcessNotifierAura" ref="c:AsyncProcessNotifierAura" label="Async Process Notifier"/>
+</aura:documentation>

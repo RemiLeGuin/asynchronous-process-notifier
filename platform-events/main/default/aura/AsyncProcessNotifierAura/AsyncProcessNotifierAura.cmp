@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <lightning:empApi aura:id="empApi"/>
+    <aura:attribute access="private" name="channel" type="String" default="/event/AsynchronousProcessNotification__e"/>
+    <aura:attribute access="private" name="subscription" type="Map"/>
+    <aura:attribute access="private" name="recordId" type="String"/>
+    <aura:attribute access="private" name="objectType" type="String"/>
+    <aura:attribute access="private" name="isRefreshed" type="Boolean" default="true"/>
+    <aura:attribute access="private" name="refreshRecordsViewPage" type="Boolean"/>
+    <aura:attribute access="private" name="refreshObjectsListViews" type="Boolean"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:handler event="aura:locationChange" action="{!c.handleLocationChange}"/>
+    <aura:registerEvent name="toastEvent" type="force:showToast"/>
+</aura:component>
