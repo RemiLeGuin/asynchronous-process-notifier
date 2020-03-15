@@ -1,12 +1,12 @@
 <aura:component implements="lightning:utilityItem" access="global" description="Service Aura Component listening to the 'AsynchronousProcessNotification__e' platform event.">
     <lightning:empApi aura:id="empApi"/>
-    <aura:attribute access="private" name="channel" type="String" default="/event/AsynchronousProcessNotification__e"/>
-    <aura:attribute access="private" name="subscription" type="Map"/>
-    <aura:attribute access="private" name="recordId" type="String"/>
-    <aura:attribute access="private" name="objectType" type="String"/>
-    <aura:attribute access="private" name="isRefreshed" type="Boolean" default="true"/>
-    <aura:attribute access="private" name="refreshRecordsViewPage" type="Boolean"/>
-    <aura:attribute access="private" name="refreshObjectsListViews" type="Boolean"/>
+    <aura:attribute access="public" name="channel" type="String" default="/event/AsynchronousProcessNotification__e"/>
+    <aura:attribute access="public" name="subscription" type="Map"/>
+    <aura:attribute access="public" name="recordId" type="String"/>
+    <aura:attribute access="public" name="objectType" type="String"/>
+    <aura:attribute access="public" name="isRefreshed" type="Boolean" default="true"/>
+    <aura:attribute access="public" name="refreshRecordsViewPage" type="Boolean"/>
+    <aura:attribute access="public" name="refreshObjectsListViews" type="Boolean"/>
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
     <aura:handler event="aura:locationChange" action="{!c.handleLocationChange}"/>
     <aura:registerEvent name="toastEvent" type="force:showToast"/>
