@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Message__c</fullName>
+    <fullName>ObjectApiName__c</fullName>
+    <description>Populate concerned record's object API name if you want allow user to navigate to the record's view from the toast notification and/or if you want to refresh record's view and/or object's related lists to see the rollback data.</description>
     <externalId>false</externalId>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>
-    <label>Message</label>
+    <label>Object API Name</label>
     <length>255</length>
     <required>false</required>
     <type>Text</type>

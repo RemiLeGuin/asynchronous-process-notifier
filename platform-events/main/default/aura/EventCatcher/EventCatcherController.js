@@ -7,10 +7,17 @@
         const empApi = component.find("empApi");
         // Define an error handler function that prints the error to the console.
         const errorHandler = function(message) {
-            console.error("Received error ", JSON.stringify(message));
+            console.error(JSON.stringify(message));
         };
         // Register empApi error listener and pass in the error handler function.
         empApi.onError($A.getCallback(errorHandler));
         helper.subscribe(component, event, helper);
+    },
+
+    // Check for URL change during navigation.
+    handleLocationChange: function(component, event, helper) {
+        setTimeout(function() {
+            helper.refreshPages(component);
+        }, 3000);
     }
 })

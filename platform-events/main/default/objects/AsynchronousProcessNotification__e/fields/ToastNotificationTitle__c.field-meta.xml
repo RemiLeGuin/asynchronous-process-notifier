@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>OperationInformation__c</fullName>
-    <description>Set the operation status. Determines the toast notification variant: Valid values are: info (default), success, warning, and error.</description>
+    <fullName>ToastNotificationTitle__c</fullName>
     <externalId>false</externalId>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>
-    <label>Operation Information</label>
-    <length>8</length>
+    <label>Toast Notification Title</label>
+    <length>255</length>
     <required>false</required>
     <type>Text</type>
     <unique>false</unique>

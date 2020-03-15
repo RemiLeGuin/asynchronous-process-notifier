@@ -16,8 +16,8 @@ public class QueueableProcess implements Queueable {
         while (Datetime.now() < dt.addSeconds(5)) {}
         List<Contact> contactsToRollback = rollbackContactsEmailAddresses(contacts, oldContacts);
         update contactsToRollback;
-        List<AsynchronousProcess__e> asyncProcesses = setAsyncProcessEvents(contactsToRollback, userId);
-        EventBus.publish(asyncProcesses);
+        List<AsynchronousProcessNotification__e> asynchronousProcessNotification = setAsynchronousProcessNotificationEvents(contactsToRollback, userId);
+        EventBus.publish(asynchronousProcessNotification);
     }
 
     private static List<Contact> rollbackContactsEmailAddresses(List<Contact> contacts, Map<Id, Contact> oldContacts) {
@@ -30,18 +30,21 @@ public class QueueableProcess implements Queueable {
         return contacts;
     }
 
-    private static List<AsynchronousProcess__e> setAsyncProcessEvents(List<Contact> contacts, Id userId) {
-        List<AsynchronousProcess__e> asyncProcesses = new List<AsynchronousProcess__e> ();
+    private static List<AsynchronousProcessNotification__e> setAsynchronousProcessNotificationEvents(List<Contact> contacts, Id userId) {
+        List<AsynchronousProcessNotification__e> asynchronousProcessNotification = new List<AsynchronousProcessNotification__e> ();
         for (Contact ct : contacts) {
-            asyncProcesses.add(new AsynchronousProcess__e(RecordId__c = ct.Id,
-                                                          ObjectApiName__c = 'Contact',
-                                                          ToastNotificationMode__c = 'sticky',
-                                                          OperationInformation__c = 'error',
-                                                          RecordName__c = ct.FirstName + ' ' + ct.LastName,
-                                                          UserToNotify__c = userId,
-                                                          Message__c = Label.EmailAddressAlreadyExists));
+            asynchronousProcessNotification.add(new AsynchronousProcessNotification__e(UsersToNotify__c = userId,
+                                                                                       RefreshRecordsViewPage__c = true,
+                                                                                       RefreshObjectsListViews__c = true,
+                                                                                       DisplayNotification__c = true,
+                                                                                       ToastNotificationMode__c = 'sticky',
+                                                                                       ToastNotificationVariant__c = 'error',
+                                                                                       ToastNotificationMessage__c = Label.EmailAddressAlreadyExists,
+                                                                                       RecordName__c = ct.FirstName + ' ' + ct.LastName,
+                                                                                       RecordId__c = ct.Id,
+                                                                                       ObjectApiName__c = 'Contact'));
         }
-        return asyncProcesses;
+        return asynchronousProcessNotification;
     }
-    
+
 }

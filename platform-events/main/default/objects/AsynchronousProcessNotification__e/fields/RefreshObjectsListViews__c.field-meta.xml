@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RefreshObjectsListViews__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Refresh the concerned object&#39;s list views to see data rolback when a user navigates on one of the object&#39;s list views.</description>
+    <externalId>false</externalId>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Refresh Object&#39;s List Views</label>
+    <type>Checkbox</type>
+</CustomField>

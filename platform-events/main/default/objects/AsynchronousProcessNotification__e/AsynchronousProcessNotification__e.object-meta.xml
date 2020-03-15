@@ -2,6 +2,6 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <deploymentStatus>Deployed</deploymentStatus>
     <eventType>HighVolume</eventType>
-    <label>Asynchronous Process</label>
-    <pluralLabel>Asynchronous Processes</pluralLabel>
+    <label>Asynchronous Process Notification</label>
+    <pluralLabel>Asynchronous Processes Notifications</pluralLabel>
 </CustomObject>
