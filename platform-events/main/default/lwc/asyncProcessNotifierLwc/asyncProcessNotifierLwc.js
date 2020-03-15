@@ -18,14 +18,18 @@ export default class AsyncProcessNotifierLWC extends LightningElement {
     // Check for URL change during navigation.
     @wire(CurrentPageReference)
     currentPageReference() {
+        this.refreshPages();
+    }
+
+    refreshPages() {
         // When the user navigates on the record's page, refresh the data to see an eventual rollback.
-        if (this.refreshRecordsViewPage && !this.isRefreshed && this.recordId
+        if (!this.isRefreshed && this.refreshRecordsViewPage && this.recordId
             && window.location.href.includes(this.recordId + '/view')) {
             eval("$A.get('e.force:refreshView').fire();");
             this.isRefreshed = true;
         }
         // When the user navigates on a record's list view, refresh the data to see an eventual rollback.
-        if (this.refreshObjectsListViews && !this.isRefreshed && this.recordId && this.objectType
+        if (!this.isRefreshed && this.refreshObjectsListViews && this.recordId && this.objectType
             && window.location.href.includes('/lightning/o/' + this.objectType + '/list')) {
             eval("$A.get('e.force:refreshView').fire();");
             this.isRefreshed = true;
@@ -72,17 +76,8 @@ export default class AsyncProcessNotifierLWC extends LightningElement {
             this.refreshRecordsViewPage = newNotification.refreshRecordsViewPage;
             this.refreshObjectsListViews = newNotification.refreshObjectsListViews;
             this.isRefreshed = false;
-            // If the user is on the record's page, refresh the data to see an eventual rollback.
-            if (this.refreshRecordsViewPage && this.recordId && window.location.href.includes(this.recordId + '/view')) {
-                eval("$A.get('e.force:refreshView').fire();");
-                this.isRefreshed = true;
-            }
-            // If the user is on a record's list view, refresh the data to see an eventual rollback.
-            if (this.refreshObjectsListViews && this.recordId && this.objectType
-                && window.location.href.includes('/lightning/o/' + this.objectType + '/list')) {
-                eval("$A.get('e.force:refreshView').fire();");
-                this.isRefreshed = true;
-            }
+            // If the user is on the record's page or on a record's list view, refresh the data to see an eventual rollback.
+            this.refreshPages();
             // Display notification in a toast.
             if (newNotification.displayNotification && (newNotification.title || newNotification.message)) {
                 this.displayToast(newNotification.mode, newNotification.variant, newNotification.title, newNotification.message,
