@@ -1,4 +1,4 @@
-<aura:component implements="lightning:utilityItem" access="global">
+<aura:component implements="lightning:utilityItem" access="global" description="Service Aura Component listening to the 'AsynchronousProcessNotification__e' platform event.">
     <lightning:empApi aura:id="empApi"/>
     <aura:attribute access="private" name="channel" type="String" default="/event/AsynchronousProcessNotification__e"/>
     <aura:attribute access="private" name="subscription" type="Map"/>
