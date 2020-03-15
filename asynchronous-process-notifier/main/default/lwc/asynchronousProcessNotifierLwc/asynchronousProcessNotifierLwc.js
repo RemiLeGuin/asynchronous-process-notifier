@@ -4,7 +4,7 @@ import USER_ID from '@salesforce/user/Id';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from "lightning/navigation";
 
-export default class AsyncProcessNotifierLWC extends LightningElement {
+export default class AsynchronousProcessNotifierLWC extends LightningElement {
 
     channelName = '/event/AsynchronousProcessNotification__e';
     subscription = {};

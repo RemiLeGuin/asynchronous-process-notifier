@@ -2,8 +2,8 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "c/asyncProcessNotifierLwc": [
-                "asyncProcessNotifierLwc/asyncProcessNotifierLwc.js"
+            "c/asynchronousProcessNotifierLwc": [
+                "asynchronousProcessNotifierLwc/asynchronousProcessNotifierLwc.js"
             ]
         },
         "experimentalDecorators": true

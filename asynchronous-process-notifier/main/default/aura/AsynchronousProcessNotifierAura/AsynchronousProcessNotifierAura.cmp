@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForAllPageTypes">
+<aura:component implements="lightning:utilityItem" access="global">
     <lightning:empApi aura:id="empApi"/>
     <aura:attribute access="private" name="channel" type="String" default="/event/AsynchronousProcessNotification__e"/>
     <aura:attribute access="private" name="subscription" type="Map"/>
