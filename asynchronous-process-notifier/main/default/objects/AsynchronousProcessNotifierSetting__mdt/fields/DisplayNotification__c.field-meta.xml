@@ -4,10 +4,8 @@
     <defaultValue>false</defaultValue>
     <description>When no notification displays, you can just refresh view to see rollback data.</description>
     <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
     <inlineHelpText>When no notification displays, you can just refresh view to see rollback data.</inlineHelpText>
-    <isFilteringDisabled>false</isFilteringDisabled>
-    <isNameField>false</isNameField>
-    <isSortingDisabled>false</isSortingDisabled>
     <label>Display Notification</label>
     <type>Checkbox</type>
 </CustomField>

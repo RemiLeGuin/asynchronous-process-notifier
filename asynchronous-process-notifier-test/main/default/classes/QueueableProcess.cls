@@ -31,14 +31,22 @@ public class QueueableProcess implements Queueable {
     }
 
     private static List<AsynchronousProcessNotification__e> setAsynchronousProcessNotificationEvents(List<Contact> contacts, Id userId) {
+        AsynchronousProcessNotifierSetting__mdt	rollbackSettings = [SELECT DisplayNotification__c,
+                                                                           RefreshRecordsViewPage__c,
+                                                                           RefreshObjectsListViews__c,
+                                                                           ToastNotificationMode__c,
+                                                                           ToastNotificationVariant__c
+                                                                    FROM AsynchronousProcessNotifierSetting__mdt
+                                                                    WHERE DeveloperName = 'RollbackContactsEmailAddresses'
+                                                                    LIMIT 1];
         List<AsynchronousProcessNotification__e> asynchronousProcessNotification = new List<AsynchronousProcessNotification__e> ();
         for (Contact ct : contacts) {
             asynchronousProcessNotification.add(new AsynchronousProcessNotification__e(UsersToNotify__c = userId,
-                                                                                       RefreshRecordsViewPage__c = true,
-                                                                                       RefreshObjectsListViews__c = true,
-                                                                                       DisplayNotification__c = true,
-                                                                                       ToastNotificationMode__c = 'sticky',
-                                                                                       ToastNotificationVariant__c = 'error',
+                                                                                       DisplayNotification__c = rollbackSettings.DisplayNotification__c,
+                                                                                       RefreshRecordsViewPage__c = rollbackSettings.RefreshRecordsViewPage__c,
+                                                                                       RefreshObjectsListViews__c = rollbackSettings.RefreshObjectsListViews__c,
+                                                                                       ToastNotificationMode__c = rollbackSettings.ToastNotificationMode__c,
+                                                                                       ToastNotificationVariant__c = rollbackSettings.ToastNotificationVariant__c,
                                                                                        ToastNotificationMessage__c = Label.EmailAddressAlreadyExists,
                                                                                        RecordName__c = ct.FirstName + ' ' + ct.LastName,
                                                                                        RecordId__c = ct.Id,

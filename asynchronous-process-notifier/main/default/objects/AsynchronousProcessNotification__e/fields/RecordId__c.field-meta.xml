@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RecordId__c</fullName>
-    <description>Set the concerned record ID to allow the user to navigate to the record's view page (only if the record name field is also populated). Also required if refreshing record's view is required (then, do not forget to inform object type field).</description>
+    <description>Set the concerned record ID to allow the user to navigate to the record&#39;s view page (only if the record name field is also populated). Also required if refreshing record&#39;s view is required (then, do not forget to inform object type field).</description>
     <externalId>false</externalId>
+    <inlineHelpText>Set the concerned record ID to allow the user to navigate to the record&#39;s view page (only if the record name field is also populated). Also required if refreshing record&#39;s view is required (then, do not forget to inform object type field).</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

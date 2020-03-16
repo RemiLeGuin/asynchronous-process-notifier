@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ToastNotificationMode__c</fullName>
+    <description>Set the toast notification persistency. Valid values are: dismissable (default), pester or sticky.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Set the toast notification persistency. Valid values are: dismissable (default), pester or sticky.</inlineHelpText>
+    <label>Toast Notification Mode</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>dismissable</fullName>
+                <default>true</default>
+                <label>Dismissable</label>
+            </value>
+            <value>
+                <fullName>pester</fullName>
+                <default>false</default>
+                <label>Pester</label>
+            </value>
+            <value>
+                <fullName>sticky</fullName>
+                <default>false</default>
+                <label>Sticky</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

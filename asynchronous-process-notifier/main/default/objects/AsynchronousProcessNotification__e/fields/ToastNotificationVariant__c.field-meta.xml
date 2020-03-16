@@ -3,6 +3,7 @@
     <fullName>ToastNotificationVariant__c</fullName>
     <description>Set toast notification variant: Valid values are: info (default), success, warning, and error.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Set toast notification variant: Valid values are: info (default), success, warning, and error.</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

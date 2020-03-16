@@ -4,10 +4,8 @@
     <defaultValue>false</defaultValue>
     <description>Refresh the concerned record&#39;s view page to see data rolback.</description>
     <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
     <inlineHelpText>Refresh the concerned record&#39;s view page to see data rolback.</inlineHelpText>
-    <isFilteringDisabled>false</isFilteringDisabled>
-    <isNameField>false</isNameField>
-    <isSortingDisabled>false</isSortingDisabled>
     <label>Refresh Record&#39;s View Page</label>
     <type>Checkbox</type>
 </CustomField>
