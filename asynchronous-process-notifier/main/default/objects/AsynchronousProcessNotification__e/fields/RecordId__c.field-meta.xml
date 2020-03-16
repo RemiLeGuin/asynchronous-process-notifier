@@ -3,7 +3,6 @@
     <fullName>RecordId__c</fullName>
     <description>Set the concerned record ID to allow the user to navigate to the record&#39;s view page (only if the record name field is also populated). Also required if refreshing record&#39;s view is required (then, do not forget to inform object type field).</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set the concerned record ID to allow the user to navigate to the record&#39;s view page (only if the record name field is also populated). Also required if refreshing record&#39;s view is required (then, do not forget to inform object type field).</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

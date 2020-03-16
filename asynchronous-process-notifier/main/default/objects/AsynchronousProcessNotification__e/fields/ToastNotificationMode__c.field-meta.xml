@@ -3,7 +3,6 @@
     <fullName>ToastNotificationMode__c</fullName>
     <description>Set the toast notification persistency. Valid values are: dismissable (default), pester or sticky.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set the toast notification persistency. Valid values are: dismissable (default), pester or sticky.</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

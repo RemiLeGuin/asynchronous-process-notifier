@@ -2,14 +2,32 @@
     "packageDirectories": [
         {
             "path": "asynchronous-process-notifier",
-            "default": true
+            "default": true,
+            "package": "Asynchronous Process Notifier",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT"
         },
         {
             "path": "asynchronous-process-notifier-test",
-            "default": false
+            "default": false,
+            "package": "Asynchronous Process Notifier Test",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "dependencies": [
+                {
+                    "package": "Asynchronous Process Notifier",
+                    "versionNumber": "0.1.0.LATEST"
+                }
+            ]
         }
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "48.0"
+    "sourceApiVersion": "48.0",
+    "packageAliases": {
+        "Asynchronous Process Notifier": "0Ho3X000000k9jRSAQ",
+        "Asynchronous Process Notifier@0.1.0-1": "04t3X000002mF3sQAE",
+        "Asynchronous Process Notifier Test": "0Ho3X000000k9jWSAQ",
+        "Asynchronous Process Notifier Test@0.1.0-1": "04t3X000002mFObQAM"
+    }
 }

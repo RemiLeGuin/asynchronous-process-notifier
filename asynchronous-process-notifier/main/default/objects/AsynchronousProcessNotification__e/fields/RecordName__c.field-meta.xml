@@ -3,7 +3,6 @@
     <fullName>RecordName__c</fullName>
     <description>Mention of the record as it will display in the toast notification. Use the {0} index placeholder in your message to do so.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Mention of the record as it will display in the toast notification. Use the {0} index placeholder in your message to do so.</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>

@@ -4,7 +4,6 @@
     <defaultValue>false</defaultValue>
     <description>Refresh the concerned record&#39;s view page to see data rolback.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Refresh the concerned record&#39;s view page to see data rolback.</inlineHelpText>
     <isFilteringDisabled>false</isFilteringDisabled>
     <isNameField>false</isNameField>
     <isSortingDisabled>false</isSortingDisabled>
