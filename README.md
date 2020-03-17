@@ -11,8 +11,8 @@ To know and understand the purpose of platform events, please review the followi
 
 ## Installation:
 Install the unlocked package by clicking one of the following URLs:
--   [Follow this link for Sandboxes](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGWxQAM "https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGWxQAM")
--   [Follow this link for Developer Editions and Trailhead Playgrounds](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGWxQAM "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGWxQAM")
+-   [Follow this link for Sandboxes](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mHGmQAM "https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mHGmQAM")
+-   [Follow this link for Developer Editions and Trailhead Playgrounds](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mHGmQAM "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mHGmQAM")
 
 Then, follow these configuration steps:
 1. Go to the Salesforce instance and go to 'Setup' &rightarrow 'Apps' &rightarrow 'App Manager'.
@@ -24,7 +24,7 @@ Then, follow these configuration steps:
 ## Test:
 
 -   Install the test package:
-	-   [Follow this link for Sandboxes](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGfIQAU "https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGfIQAU")
-    -   [Follow this link for Developer Editions and Trailhead Playgrounds](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGfIQAU "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mGfIQAU")
+	-   [Follow this link for Sandboxes](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mQ0AQAU "https://test.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mQ0AQAU")
+    -   [Follow this link for Developer Editions and Trailhead Playgrounds](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mQ0AQAU "https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3X000002mQ0AQAU")
 -   Go to a contact and modify its email address.
 -   Wait at least 5 seconds for the toast notification to display and the contact email address to revert.
